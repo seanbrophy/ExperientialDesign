@@ -40,8 +40,23 @@ header h1 {
 .title img
 {
 	margin: 0 auto;
-	max-width: 80%;
+	max-width: 70%;
 	padding: 10px;
+}
+
+#bud
+{
+	max-width: 65%;
+}
+
+#park
+{
+	padding-top: 20px
+}
+
+#hall
+{
+	max-width: 65%;
 }
 
 .info
@@ -76,7 +91,7 @@ header h1 {
 .infoBox {
 	background-color: #a3b1b4;
 	width: 98%;
-	height: 60vh;
+	height: 61vh;
 	margin: 0 auto;
 }
 

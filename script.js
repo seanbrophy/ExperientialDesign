@@ -1,6 +1,6 @@
 nw.require("nwjs-j5-fix").fix();
 var five = require("johnny-five");
-var board1 = new five.Board({port: "COM3"});
+var board1 = new five.Board({port: "COM5"});
 var board2 = new five.Board({port: "COM4"});
 
 var info = document.querySelectorAll(".info");

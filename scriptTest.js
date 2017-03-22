@@ -2,6 +2,7 @@ nw.require("nwjs-j5-fix").fix();
 var five = require("johnny-five");
 var board1 = new five.Board({port: "COM3"});
 var board2 = new five.Board({port: "COM4"});
+var board3 = new five.Board({port: "COM5"});
 
 var info = document.querySelectorAll(".info");
 var text = document.querySelectorAll(".text");
@@ -71,10 +72,23 @@ board1.on("ready", function() {
         }
     });
   });
+});
 
+board2.on("ready", function() {
+
+  //sensors
+  new five.Pin({pin:"A4", board:board2}).low();//D
+  new five.Pin({pin:"A5", board:board2}).high();//C
+
+
+  // Create a new `nunchuk` hardware instance.
+  var  nunchuk2 = new five.Wii.Nunchuk({
+    freq: 50,
+    board: board2
+  });
   var timeoutJoystick;
 
-  nunchuk1.joystick.on("change", function(event){
+  nunchuk2.joystick.on("change", function(event){
     clearTimeout(timeoutJoystick);
     timeoutJoystick = setTimeout(function(){
       console.log('click that button');
@@ -96,11 +110,24 @@ board1.on("ready", function() {
         startAll();
       }
   });
+});
 
 
+board3.on("ready", function() {
+
+  //sensors
+  new five.Pin({pin:"A4", board:board3}).low();//D
+  new five.Pin({pin:"A5", board:board3}).high();//C
+
+
+  // Create a new `nunchuk` hardware instance.
+  var  nunchuk3 = new five.Wii.Nunchuk({
+    freq: 50,
+    board: board3
+  });
   var timeoutAcc;
 
-  nunchuk1.accelerometer.on("change", function(event){
+  nunchuk3.accelerometer.on("change", function(event){
     clearTimeout(timeoutAcc);
     timeoutAcc = setTimeout(function(){
       console.log('click that button');

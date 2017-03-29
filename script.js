@@ -55,7 +55,7 @@ board1.on("ready", function() {
         console.log('click that button');
         track1.muted = true;
 
-        TweenMax.to(info[0], 2, {height:20});
+        TweenMax.to(info[0], 2, {height:0});
         TweenMax.to(text[0], 2, {top:0,delay:2});
 
         if(track1.muted && track2.muted && track3.muted) {
@@ -64,8 +64,8 @@ board1.on("ready", function() {
       }, 1000);
         track1.muted = false;
 
-        TweenMax.to(info[0], 2, {height:600});
-        TweenMax.to(text[0], 20, {top:-600, delay:2});
+        TweenMax.to(info[0], 2, {height:400});
+        TweenMax.to(text[0], 50, {top:-1000, delay:2, ease: Linear.easeNone});
 
         if(!track1.muted || !track2.muted || !track3.muted) {
           startAll();
@@ -94,7 +94,7 @@ board2.on("ready", function() {
       console.log('click that button');
       track2.muted = true;
 
-      TweenMax.to(info[1], 2, {height:20});
+      TweenMax.to(info[1], 2, {height:0});
       TweenMax.to(text[1], 2, {top:0,delay:2});
 
       if(track1.muted && track2.muted && track3.muted) {
@@ -103,8 +103,8 @@ board2.on("ready", function() {
     }, 1000);
       track2.muted = false;
 
-      TweenMax.to(info[1], 2, {height:600});
-      TweenMax.to(text[1], 20, {top:-600, delay:2});
+      TweenMax.to(info[1], 2, {height:400});
+      TweenMax.to(text[1], 50, {top:-1000, delay:2, ease: Linear.easeNone});
 
       if(!track1.muted || !track2.muted || !track3.muted) {
         startAll();
@@ -133,7 +133,7 @@ board3.on("ready", function() {
       console.log('click that button');
       track3.muted = true;
 
-      TweenMax.to(info[2], 2, {height:20});
+      TweenMax.to(info[2], 2, {height:0});
       TweenMax.to(text[2], 2, {top:0,delay:2});
 
       if(track1.muted && track2.muted && track3.muted) {
@@ -142,8 +142,8 @@ board3.on("ready", function() {
     }, 1000);
       track3.muted = false;
 
-      TweenMax.to(info[2], 2, {height:600});
-      TweenMax.to(text[2], 20, {top:-600, delay:2});
+      TweenMax.to(info[2], 2, {height:400});
+      TweenMax.to(text[2], 50, {top:-1000, delay:2, ease: Linear.easeNone});
 
       if(!track1.muted || !track2.muted || !track3.muted) {
         startAll();

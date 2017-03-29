@@ -2,34 +2,36 @@ body
 {
 	padding: 0;
 	margin: 0;
-	background-color: #a0b5b9;
+	background-color: #000126;
 }
 
 header {
-	background-color: #84989c;
-	font-family: helvetica, arial, sans-serif;
-	text-transform: uppercase;
+	background-color: #111850;
+	font-family:'baron_neueregular', helvetica, arial, sans-serif;
 	color: #fff;
 	text-align: center;
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 	padding: 1px 0 20px 0;
 	height: 17vh;
+
 }
 
 header h2 {
-	font-size: 30px;
+	font-size: 23px;
 	margin-bottom: 0;
+	letter-spacing: 7px;
 }
 
 header h1 {
-	font-size: 50px;
+	font-size: 68px;
 	margin-top: 0;
+	letter-spacing: 11px;
 }
 
 /*info general style*/
 .title
 {
-	background-color: #b4bfc2;
+	background-color: rgba(255,255,255,0.8);
 	width: 100%;
 	height: 100px;
 	text-align: center;
@@ -77,22 +79,24 @@ header h1 {
 #container
 {
 	/*position: relative;*/
-	background-color: #7d9195;
+	/*background-color: #7d9195;*/
 	height: 77vh;
 }
 
 .box
 {
-	/*position: absolute;*/
+	 position: relative;
+  z-index: 2;
 	width: 33.333%;
 	float: left;
 }
 
 .infoBox {
-	background-color: #a3b1b4;
+	background-color: rgba(0,1,38,.8);
 	width: 98%;
 	height: 61vh;
 	margin: 0 auto;
+	color: #fff;
 }
 
 /*individual style*/
@@ -143,3 +147,85 @@ header h1 {
 {
 	/*background-color: #B4A588;*/
 }
+
+#comingSoon {
+	color: #fff;
+	line-height: 18px;
+	font-family:'baron_neueregular', helvetica, arial, sans-serif;
+	text-transform: lowercase;
+	text-align: center;
+	background-color: rgba(0,1,38,.6);
+}
+
+#comingSoon h3 {
+	padding-top: 10px;
+	font-size: 17px;
+	letter-spacing: 4px;
+}
+
+#comingSoon h4 {
+	font-size: 13px;
+	letter-spacing: 4px;
+	padding-bottom: 10px;
+}
+
+#comingSoon h3, h4, p {
+	margin: 0 0 0 0;
+}
+
+
+/********************************************* font added ********************************************/
+
+@font-face {
+    font-family: 'baron_neueregular';
+    src: url('../fonts/baron_neue-webfont.woff2') format('woff2'),
+         url('../fonts/baron_neue-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/********************************************* video styles ********************************************/
+
+
+
+.video-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1000;
+}
+
+.video {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,8 @@
 nw.require("nwjs-j5-fix").fix();
 var five = require("johnny-five");
-var board1 = new five.Board({port: "COM5"});
+var board1 = new five.Board({port: "COM3"});
 var board2 = new five.Board({port: "COM4"});
+var board3 = new five.Board({port: "COM5"});
 
 var info = document.querySelectorAll(".info");
 var text = document.querySelectorAll(".text");
@@ -44,36 +45,34 @@ board1.on("ready", function() {
     board: board1
   });
 
+  var timeoutButtons;
+
   ["down", "up", "hold"].forEach(function(type) {
 
     nunchuk1.on(type, function(event){
-      console.log("nunchuck1");
-      console.log(event.target.which);
+      clearTimeout(timeoutButtons);
+      timeoutButtons = setTimeout(function(){
+        console.log('click that button');
+        track1.muted = true;
 
-        if(event.target.isDown) {
-          track1.muted = false;
+        TweenMax.to(info[0], 2, {height:20});
+        TweenMax.to(text[0], 2, {top:0,delay:2});
 
-          TweenMax.to(info[0], 2, {height:600});
-          TweenMax.to(text[0], 20, {top:-600, delay:2});
-
-        }else if(event.target.isUp){
-          track1.muted = true;
-
-          TweenMax.to(info[0], 2, {height:20});
-    			TweenMax.to(text[0], 2, {top:0,delay:2});
-
+        if(track1.muted && track2.muted && track3.muted) {
+          stopAll();
         }
+      }, 1000);
+        track1.muted = false;
+
+        TweenMax.to(info[0], 2, {height:600});
+        TweenMax.to(text[0], 20, {top:-600, delay:2});
 
         if(!track1.muted || !track2.muted || !track3.muted) {
           startAll();
-        }else if(track1.muted && track2.muted && track3.muted) {
-          stopAll();
         }
-
     });
   });
 });
-
 
 board2.on("ready", function() {
 
@@ -87,33 +86,69 @@ board2.on("ready", function() {
     freq: 50,
     board: board2
   });
+  var timeoutJoystick;
 
-  ["down", "up", "hold"].forEach(function(type) {
+  nunchuk2.joystick.on("change", function(event){
+    clearTimeout(timeoutJoystick);
+    timeoutJoystick = setTimeout(function(){
+      console.log('click that button');
+      track2.muted = true;
 
-    nunchuk2.on(type, function(event){
-      console.log("nunchuck2");
-      console.log(event.target.which);
+      TweenMax.to(info[1], 2, {height:20});
+      TweenMax.to(text[1], 2, {top:0,delay:2});
 
-        if(event.target.isDown) {
-          track2.muted = false;
+      if(track1.muted && track2.muted && track3.muted) {
+        stopAll();
+      }
+    }, 1000);
+      track2.muted = false;
 
-          TweenMax.to(info[1], 2, {height:600});
-          TweenMax.to(text[1], 20, {top:-600, delay:2});
+      TweenMax.to(info[1], 2, {height:600});
+      TweenMax.to(text[1], 20, {top:-600, delay:2});
 
-        }else if(event.target.isUp){
-          track2.muted = true;
-
-          TweenMax.to(info[1], 2, {height:20});
-    			TweenMax.to(text[1], 2, {top:0,delay:2});
-
-        }
-
-        if(!track1.muted || !track2.muted || !track3.muted) {
-          startAll();
-        }else if(track1.muted && track2.muted && track3.muted) {
-          stopAll();
-        }
-
-    });
+      if(!track1.muted || !track2.muted || !track3.muted) {
+        startAll();
+      }
   });
+});
+
+
+board3.on("ready", function() {
+
+  //sensors
+  new five.Pin({pin:"A4", board:board3}).low();//D
+  new five.Pin({pin:"A5", board:board3}).high();//C
+
+
+  // Create a new `nunchuk` hardware instance.
+  var  nunchuk3 = new five.Wii.Nunchuk({
+    freq: 50,
+    board: board3
+  });
+  var timeoutAcc;
+
+  nunchuk3.accelerometer.on("change", function(event){
+    clearTimeout(timeoutAcc);
+    timeoutAcc = setTimeout(function(){
+      console.log('click that button');
+      track3.muted = true;
+
+      TweenMax.to(info[2], 2, {height:20});
+      TweenMax.to(text[2], 2, {top:0,delay:2});
+
+      if(track1.muted && track2.muted && track3.muted) {
+        stopAll();
+      }
+    }, 1000);
+      track3.muted = false;
+
+      TweenMax.to(info[2], 2, {height:600});
+      TweenMax.to(text[2], 20, {top:-600, delay:2});
+
+      if(!track1.muted || !track2.muted || !track3.muted) {
+        startAll();
+      }
+  });
+
+
 });

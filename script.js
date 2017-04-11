@@ -152,3 +152,14 @@ board3.on("ready", function() {
 
 
 });
+
+track1.onended = function () {
+  alert("song ended");
+  track1.currentTime = 0;
+  track2.currentTime = 0;
+  track3.currentTime = 0;
+  stopAll();
+  track1.muted = true;
+  track2.muted = true;
+  track3.muted = true;
+}

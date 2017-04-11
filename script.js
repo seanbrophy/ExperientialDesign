@@ -12,6 +12,14 @@ function startAll() {
     track1.play();
     track2.play();
     track3.play();
+    track1.volume = 0.35;
+    track2.volume = 0.35;
+    track3.volume = 0.35;
+    if(!track1.muted && !track2.muted && !track3.muted) {
+      track1.volume = 1;
+      track2.volume = 1;
+      track3.volume = 1;
+    }
 }
 
 function stopAll() {
@@ -65,7 +73,7 @@ board1.on("ready", function() {
         track1.muted = false;
 
         TweenMax.to(info[0], 2, {height:400});
-        TweenMax.to(text[0], 50, {top:-1000, delay:2, ease: Linear.easeNone});
+        TweenMax.to(text[0], 120, {ease: Power0.easeNone, top:-4000, delay:2});
 
         if(!track1.muted || !track2.muted || !track3.muted) {
           startAll();
@@ -104,7 +112,7 @@ board2.on("ready", function() {
       track2.muted = false;
 
       TweenMax.to(info[1], 2, {height:400});
-      TweenMax.to(text[1], 50, {top:-1000, delay:2, ease: Linear.easeNone});
+      TweenMax.to(text[1], 120, {ease: Power0.easeNone, top:-4000, delay:2});
 
       if(!track1.muted || !track2.muted || !track3.muted) {
         startAll();
@@ -143,7 +151,7 @@ board3.on("ready", function() {
       track3.muted = false;
 
       TweenMax.to(info[2], 2, {height:400});
-      TweenMax.to(text[2], 50, {top:-1000, delay:2, ease: Linear.easeNone});
+      TweenMax.to(text[2], 120, {ease: Power0.easeNone, top:-4000, delay:2});
 
       if(!track1.muted || !track2.muted || !track3.muted) {
         startAll();
@@ -152,6 +160,9 @@ board3.on("ready", function() {
 
 
 });
+
+// TweenMax.to(info[0], 2, {height:400});
+// TweenMax.to(text[0], 120, {ease: Power0.easeNone, top:-3000, delay:2});
 
 var congrats = document.querySelector("#congrats");
 var clap = document.querySelector("#clap");
